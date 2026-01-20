@@ -85,8 +85,8 @@
     <?php endif; ?>
 </div>
 
-<script src="<?= $basePath ?>/pdf.js/pdf.mjs"></script>
-<script>pdfjsLib.GlobalWorkerOptions.workerSrc = "<?= $basePath ?>/pdf.js/pdf.worker.mjs">;</script>
+<script type="module" src="<?= $basePath ?>/pdf.js/pdf.mjs"></script>
+<script>pdfjsLib.GlobalWorkerOptions.workerSrc = "<?= $basePath ?>/pdf.js/pdf.worker.mjs";</script>
 <script src="<?= $basePath ?>/app.js"></script>
 </body>
 </html>
