@@ -85,8 +85,21 @@
     <?php endif; ?>
 </div>
 
-<script type="module" src="<?= $basePath ?>/pdf.js/pdf.mjs"></script>
-<script>pdfjsLib.GlobalWorkerOptions.workerSrc = "<?= $basePath ?>/pdf.js/pdf.worker.mjs";</script>
+<link rel="modulepreload" href="<?= $basePath ?>/pdfjs/pdf.mjs">
+<link rel="modulepreload" href="<?= $basePath ?>/pdfjs/pdf.worker.mjs">
+
+<script type="module">
+    // 1. Importieren der Module
+    import * as pdfjsLib from '<?= $basePath ?>/pdf.js/pdf.mjs';
+    
+    // 2. Worker konfigurieren (Pfad zum lokalen Worker)
+    pdfjsLib.GlobalWorkerOptions.workerSrc = '<?= $basePath ?>/pdf.js/pdf.worker.mjs';
+
+    // 3. WICHTIG: "Brücke" bauen
+    // Da app.js kein Modul ist, erwartet es 'pdfjsLib' im globalen Scope (window).
+    // Wir hängen das importierte Modul also manuell an das window-Objekt.
+    window.pdfjsLib = pdfjsLib;
+</script>
 <script src="<?= $basePath ?>/app.js"></script>
 </body>
 </html>
