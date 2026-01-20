@@ -1,0 +1,63 @@
+:root {
+    --primary-color: #d0101c;
+    --primary-hover: #a00c15;
+    --selection-bg: rgba(208, 16, 28, 0.3);
+    --selection-border: #d0101c;
+    --selected-bg: rgba(0, 123, 255, 0.3);
+    --selected-border: #007bff;
+}
+body { background-color: #f8f9fa; }
+.navbar { background-color: var(--primary-color); }
+.btn-primary { background-color: var(--primary-color); border-color: var(--primary-color); }
+.btn-primary:hover, .btn-primary:active, .btn-primary:disabled { background-color: var(--primary-hover) !important; border-color: var(--primary-hover) !important; }
+.btn-outline-primary { color: var(--primary-color); border-color: var(--primary-color); }
+.btn-outline-primary:hover, .btn-outline-primary.active { background-color: var(--primary-color) !important; border-color: var(--primary-color) !important; color: white !important; }
+#drop-zone { transition: all 0.2s ease; cursor: pointer; background-color: #fff; }
+#drop-zone.dragover { border-color: var(--primary-color) !important; background-color: rgba(208, 16, 28, 0.05) !important; }
+.sticky-top-custom { position: sticky; top: 0; z-index: 1020; transition: top 0.3s; }
+#pages-container {
+    text-align: center;
+    overflow-x: auto; 
+    padding-bottom: 20px;
+    
+    display: flex;
+    flex-direction: column;
+    
+    /* FIX für Problem 2 (Scrollen): */
+    /* Wir dürfen NICHT 'center' nutzen, sonst wird der linke Rand bei Zoom abgeschnitten. */
+    align-items: flex-start; 
+    
+    gap: 20px;
+    width: 100%; /* Sicherstellen, dass der Container die volle Breite nutzt */
+}
+
+.pdf-page-wrapper {
+    position: relative;
+    display: block;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border: 1px solid #ddd;
+    background-color: #fff;
+    overflow: hidden; 
+    flex-shrink: 0;
+    
+    /* FIX für Problem 2 (Zentrierung): */
+    /* Da der Container jetzt 'flex-start' (links) ist, zentrieren wir das Element selbst mit Auto-Margins. */
+    /* Wenn es zu breit wird, bleibt es links verankert und man kann scrollen. */
+    margin: 0 auto; 
+}
+.pdf-canvas { display: block; vertical-align: bottom; }
+.selection-canvas { position: absolute; top: 0; left: 0; cursor: crosshair; z-index: 10; }
+footer a:hover { color: var(--primary-color) !important; text-decoration: underline !important; }
+
+/* Standard: Verstecken */
+.mobile-only-tools {
+    display: none !important;
+}
+
+/* Wenn das Gerät einen Touchscreen hat (genauer: einen "groben" Zeiger wie einen Finger),
+   dann zeigen wir die Tools an - EGAL wie breit der Bildschirm ist. */
+@media (pointer: coarse) {
+    .mobile-only-tools {
+        display: inline-flex !important;
+    }
+}

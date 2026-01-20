@@ -1,0 +1,49 @@
+# APP SETUP
+APP_BASE_PATH=/
+MAX_UPLOAD_MB=100
+PYTHON_SERVICE_URL=http://127.0.0.1:5000/redact
+
+# AUTH SETUP
+# options: 'oidc', 'shibboleth'. 
+# If empty or other value, this line is ignored and everyone can access.
+AUTH_METHOD=none
+
+#Path to SQLite database file.
+DB_PATH=database/auth.sqlite
+
+# SHIBBOLETH
+SHIB_LOGIN_URL=/Shibboleth.sso/Login?target=${APP_BASE_PATH}/auth/callback
+
+# --- SHIBBOLETH SOURCE ---
+# In which $_SERVER variables are the groups? (comma-separated)
+# example: Shib-EP-Entitlement, Shib-Affiliation, idmgroup
+SHIB_GROUP_ATTRS=Shib-EP-Entitlement
+
+# OIDC
+OIDC_IDP=https://example.com
+OIDC_CLIENT_ID=
+OIDC_CLIENT_SECRET=
+
+# --- OIDC SOURCE ---
+# In which claims are the groups? (comma-separated)
+# example: groups, roles
+OIDC_GROUP_SCOPES=groups,roles
+
+# --------------------------------------------------------
+# Authorization
+#
+# If neither users nor groups is added, every valid user can access.
+# --------------------------------------------------------
+# Comma-separated list of users (e. g. user1@example.com, admin).
+# Leave empty = User list is ignored
+AUTH_ALLOWED_USERS=
+
+# Comma-separated list of groups (e. g. pdf-group).
+# Leave empty = User list is ignored
+AUTH_ALLOWED_GROUPS=
+
+
+
+# FOOTER LINKS (optional)
+#IMPRINT_URL=https://example.com/imprint
+#PRIVACY_URL=https://example.com/privacy

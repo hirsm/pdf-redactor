@@ -1,0 +1,5 @@
+vendor
+public/.htaccess
+.env
+python-redactor/venv
+python-redactor/__pycache__

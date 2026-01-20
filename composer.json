@@ -1,0 +1,17 @@
+{
+    "require": {
+        "slim/slim": "^4.0",
+        "slim/psr7": "^1.0",
+        "vlucas/phpdotenv": "^5.0",
+        "guzzlehttp/guzzle": "^7.0",
+        "jumbojett/openid-connect-php": "^0.9",
+        "php-di/php-di": "^6.0",
+        "symfony/translation": "^7.4",
+        "willdurand/negotiation": "^3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
