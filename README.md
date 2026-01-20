@@ -65,7 +65,7 @@ If using OIDC, please modify your `.env`:
 
 This setup was tested with Nextcloud and OpenID Connect App.
 
-## Accessability
+## Mobile Usage
 This app is also optimized for usage with small portrait or landscape mode screens and touch usage (smartphones).
 
 ## GDPR compliance
