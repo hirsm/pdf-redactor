@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $t->trans('app_title') ?></title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?= $basePath ?>/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= $basePath ?>/style.css" rel="stylesheet">
 </head>
 <body class="d-flex flex-column align-items-center justify-content-center" style="min-height: 100vh; background: #f8f9fa;">
@@ -58,7 +58,7 @@
     </footer>
 <?php endif; ?>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="<?= $basePath ?>/js/bootstrap.bundle.min.js"></script>
 <script>
     const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
     const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));

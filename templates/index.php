@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=4.0, user-scalable=yes">
     <title><?= $t->trans('app_title') ?></title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?= $basePath ?>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= $basePath ?>/style.css" rel="stylesheet">
     <script>
         window.APP_BASE_PATH = "<?= $basePath ?>";
@@ -85,8 +85,8 @@
     <?php endif; ?>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-<script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+<script src="<?= $basePath ?>/pdf.js/pdf.mjs"></script>
+<script>pdfjsLib.GlobalWorkerOptions.workerSrc = "<?= $basePath ?>/pdf.js/pdf.worker.mjs">;</script>
 <script src="<?= $basePath ?>/app.js"></script>
 </body>
 </html>
