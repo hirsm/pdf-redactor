@@ -71,4 +71,6 @@ This app is also optimized for usage with small portrait or landscape mode scree
 ## GDPR compliance
 This app is designed with privacy in mind. The PDF file is only submitted to apply redactions, everything else is done client-side. The submitted PDF file is either worked with in memory or via a temp file. Everything is deleted after the script completes. If you add imprint or privacy url, they are added to your web app. Furthermore, if you add privacy url, a hint is added to the "Stay logged-in" checkbox, explaining the privacy implementations and linking to the privacy url.
 
+All external (JS, CSS) packages are hosted from within the project - no dependencies on external CDNs.
+
 In 5 % of app usage, overdue tokens are deleted from database.
