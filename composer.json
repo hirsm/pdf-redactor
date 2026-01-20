@@ -7,11 +7,46 @@
         "jumbojett/openid-connect-php": "^0.9",
         "php-di/php-di": "^6.0",
         "symfony/translation": "^7.4",
-        "willdurand/negotiation": "^3.1"
+        "twbs/bootstrap": "^5.3",
+        "willdurand/negotiation": "^3.1",
+        "clean-composer-packages/pdf-js": "^5.3"
     },
     "autoload": {
         "psr-4": {
             "App\\": "src/"
         }
+    },
+
+    "scripts": {
+        "post-update-cmd": [
+            "php -r \"if(is_dir('public/bootstrap')) { array_map('unlink', glob('public/bootstrap/css/fonts/*')); array_map('unlink', glob('public/bootstrap/css/*')); array_map('unlink', glob('public/bootstrap/js/*')); rmdir('public/bootstrap/css/fonts'); rmdir('public/bootstrap/css'); rmdir('public/bootstrap/js'); rmdir('public/bootstrap');}\"",
+            "php -r \"mkdir('public/bootstrap/css/fonts', 0755, true);\"",
+            "php -r \"mkdir('public/bootstrap/js', 0755, true);\"",
+            "php -r \"if(is_dir('public/pdf.js')) { array_map('unlink', glob('public/pdf.js/*')); rmdir('public/pdf.js');}\"",
+            "php -r \"mkdir('public/pdf.js', 0755, true);\"",
+            "php -r \"copy('vendor/twbs/bootstrap/dist/css/bootstrap.min.css','public/bootstrap/css/bootstrap.min.css');\"",
+            "php -r \"copy('vendor/twbs/bootstrap/dist/css/bootstrap.min.css.map','public/bootstrap/css/bootstrap.min.css.map');\"",
+            "php -r \"copy('vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js','public/bootstrap/js/bootstrap.bundle.min.js');\"",
+            "php -r \"copy('vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js.map','public/bootstrap/js/bootstrap.bundle.min.js.map');\"",
+            "php -r \"copy('vendor/clean-composer-packages/pdf-js/build/pdf.mjs','public/pdf.js/pdf.mjs');\"",
+            "php -r \"copy('vendor/clean-composer-packages/pdf-js/build/pdf.mjs.map','public/pdf.js/pdf.mjs.map');\"",
+            "php -r \"copy('vendor/clean-composer-packages/pdf-js/build/pdf.worker.mjs','public/pdf.js/pdf.worker.mjs');\"",
+            "php -r \"copy('vendor/clean-composer-packages/pdf-js/build/pdf.worker.mjs.map','public/pdf.js/pdf.worker.mjs.map');\""
+        ],
+        "post-install-cmd": [
+            "php -r \"if(is_dir('public/bootstrap')) { array_map('unlink', glob('public/bootstrap/css/fonts/*')); array_map('unlink', glob('public/bootstrap/css/*')); array_map('unlink', glob('public/bootstrap/js/*')); rmdir('public/bootstrap/css/fonts'); rmdir('public/bootstrap/css'); rmdir('public/bootstrap/js'); rmdir('public/bootstrap');}\"",
+            "php -r \"mkdir('public/bootstrap/css/fonts', 0755, true);\"",
+            "php -r \"mkdir('public/bootstrap/js', 0755, true);\"",
+            "php -r \"if(is_dir('public/pdf.js')) { array_map('unlink', glob('public/pdf.js/*')); rmdir('public/pdf.js');}\"",
+            "php -r \"mkdir('public/pdf.js', 0755, true);\"",
+            "php -r \"copy('vendor/twbs/bootstrap/dist/css/bootstrap.min.css','public/bootstrap/css/bootstrap.min.css');\"",
+            "php -r \"copy('vendor/twbs/bootstrap/dist/css/bootstrap.min.css.map','public/bootstrap/css/bootstrap.min.css.map');\"",
+            "php -r \"copy('vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js','public/bootstrap/js/bootstrap.bundle.min.js');\"",
+            "php -r \"copy('vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js.map','public/bootstrap/js/bootstrap.bundle.min.js.map');\"",
+            "php -r \"copy('vendor/clean-composer-packages/pdf-js/build/pdf.mjs','public/pdf.js/pdf.mjs');\"",
+            "php -r \"copy('vendor/clean-composer-packages/pdf-js/build/pdf.mjs.map','public/pdf.js/pdf.mjs.map');\"",
+            "php -r \"copy('vendor/clean-composer-packages/pdf-js/build/pdf.worker.mjs','public/pdf.js/pdf.worker.mjs');\"",
+            "php -r \"copy('vendor/clean-composer-packages/pdf-js/build/pdf.worker.mjs.map','public/pdf.js/pdf.worker.mjs.map');\""
+        ]
     }
 }

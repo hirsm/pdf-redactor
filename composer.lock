@@ -4,8 +4,41 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c9bf3d7a3e403bbd9f5bfc32505dc7f4",
+    "content-hash": "c64c8524bbf615ae693fa8a5cb24a8fd",
     "packages": [
+        {
+            "name": "clean-composer-packages/pdf-js",
+            "version": "v5.3.31",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.com/clean-composer-packages/pdf-js.git",
+                "reference": "28a23985058f12447ed791b00da7591c9c27cd42"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/clean-composer-packages%2Fpdf-js/repository/archive.zip?sha=28a23985058f12447ed791b00da7591c9c27cd42",
+                "reference": "28a23985058f12447ed791b00da7591c9c27cd42",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Composer build of Mozilla's PDF.js library.",
+            "homepage": "http://mozilla.github.io/pdf.js/",
+            "keywords": [
+                "mozilla",
+                "pdf",
+                "pdf.js",
+                "pdfjs"
+            ],
+            "support": {
+                "issues": "https://github.com/mozilla/pdf.js/issues",
+                "source": "https://github.com/mozilla/pdf.js"
+            },
+            "time": "2025-06-21T16:49:24+00:00"
+        },
         {
             "name": "fig/http-message-util",
             "version": "1.1.5",
@@ -2191,6 +2224,56 @@
             "time": "2025-07-15T13:41:35+00:00"
         },
         {
+            "name": "twbs/bootstrap",
+            "version": "v5.3.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twbs/bootstrap.git",
+                "reference": "25aa8cc0b32f0d1a54be575347e6d84b70b1acd7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/25aa8cc0b32f0d1a54be575347e6d84b70b1acd7",
+                "reference": "25aa8cc0b32f0d1a54be575347e6d84b70b1acd7",
+                "shasum": ""
+            },
+            "replace": {
+                "twitter/bootstrap": "self.version"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Otto",
+                    "email": "markdotto@gmail.com"
+                },
+                {
+                    "name": "Jacob Thornton",
+                    "email": "jacobthornton@gmail.com"
+                }
+            ],
+            "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
+            "homepage": "https://getbootstrap.com/",
+            "keywords": [
+                "JS",
+                "css",
+                "framework",
+                "front-end",
+                "mobile-first",
+                "responsive",
+                "sass",
+                "web"
+            ],
+            "support": {
+                "issues": "https://github.com/twbs/bootstrap/issues",
+                "source": "https://github.com/twbs/bootstrap/tree/v5.3.8"
+            },
+            "time": "2025-08-26T02:01:02+00:00"
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "v5.6.3",
             "source": {
@@ -2339,5 +2422,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
