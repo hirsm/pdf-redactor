@@ -85,8 +85,8 @@
     <?php endif; ?>
 </div>
 
-<link rel="modulepreload" href="<?= $basePath ?>/pdfjs/pdf.mjs">
-<link rel="modulepreload" href="<?= $basePath ?>/pdfjs/pdf.worker.mjs">
+<link rel="modulepreload" href="<?= $basePath ?>/pdf.js/pdf.mjs">
+<link rel="modulepreload" href="<?= $basePath ?>/pdf.js/pdf.worker.mjs">
 
 <script type="module">
     // 1. Importieren der Module
