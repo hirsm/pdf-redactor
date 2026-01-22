@@ -5,3 +5,4 @@ public/pdf.js
 .env
 python-redactor/venv
 python-redactor/__pycache__
+database/
