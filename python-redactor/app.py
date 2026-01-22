@@ -7,7 +7,7 @@ import os
 
 app = Flask(__name__)
 
-# Maximale Upload-Größe begrenzen
+# Limit upload size
 app.config['MAX_CONTENT_LENGTH'] = 200 * 1024 * 1024  # 200 MB
 
 @app.route('/redact', methods=['POST'])
@@ -26,20 +26,32 @@ def redact_pdf():
             if 0 <= page_idx < len(doc):
                 page = doc[page_idx]
                 x, y, w, h = item['rect']
-                # Rechteck zeichnen
+                # Draw rectangle
                 page.add_redact_annot(fitz.Rect(x, y, x+w, y+h), fill=(0, 0, 0))
         
-        # Sicher anwenden
+        # Redact securely
         for page in doc:
             page.apply_redactions()
             
-        output_stream = io.BytesIO()
-        doc.save(output_stream, garbage=4, deflate=True)
-        output_stream.seek(0)
+        temp_fd, temp_path = tempfile.mkstemp(suffix='.pdf')
+        os.close(temp_fd)
+        doc.save(temp_path, garbage=4, deflate=True)
+        doc.close()
         
-        return send_file(output_stream, as_attachment=True, download_name='result.pdf', mimetype='application/pdf')
+        # Temp file is opened and deleted. Physically deleted when handle gets closed
+        f = open(temp_path, 'rb')
+        os.unlink(temp_path)
+        
+        return send_file(
+            f,
+            mimetype='application/pdf',
+            as_attachment=True,
+            download_name='redacted.pdf'
+        )
         
     except Exception as e:
+		if 'temp_path' in locals() and os.path.exists(temp_path):
+            os.unlink(temp_path)
         return str(e), 500
 
 if __name__ == '__main__':
