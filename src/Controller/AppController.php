@@ -83,12 +83,8 @@ class AppController {
             ]);
 
             // Den Stream von Python direkt an den Browser durchleiten
-            $body = $response->getBody();
-            while (!$res->getBody()->eof()) {
-                $body->write($res->getBody()->read(1024));
-            }
-
             return $response
+				->withBody($res->getBody())
                 ->withHeader('Content-Type', 'application/pdf')
                 ->withHeader('Content-Disposition', 'attachment; filename="SAFE_' . $pdfFile->getClientFilename() . '"');
 
