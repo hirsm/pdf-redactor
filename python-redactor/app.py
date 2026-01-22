@@ -1,13 +1,14 @@
 # ~/pdf-redactor/app.py
 from flask import Flask, request, send_file
 import fitz
-import io
 import json
+import tempfile
+import os
 
 app = Flask(__name__)
 
-# Maximale Upload-Größe begrenzen (Sicherheit!)
-app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024  # 50 MB
+# Maximale Upload-Größe begrenzen
+app.config['MAX_CONTENT_LENGTH'] = 200 * 1024 * 1024  # 200 MB
 
 @app.route('/redact', methods=['POST'])
 def redact_pdf():
