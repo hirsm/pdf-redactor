@@ -50,7 +50,7 @@ def redact_pdf():
         )
         
     except Exception as e:
-		if 'temp_path' in locals() and os.path.exists(temp_path):
+        if 'temp_path' in locals() and os.path.exists(temp_path):
             os.unlink(temp_path)
         return str(e), 500
 
