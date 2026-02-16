@@ -79,12 +79,12 @@ class AuthService {
         $oidc->addScope($scopes);
 
         // Config & Redirect (Wie gehabt)
-        $base = $_ENV['APP_BASE_PATH'] ?? '';
+        $base = $_ENV['APP_PROXY_PATH'] ?? '';
         $scheme = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? "https" : "http";
         if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
             $scheme = 'https';
         }
-        $host = $_SERVER['HTTP_HOST'];
+        $host = $_SERVER['HTTP_X_FORWARDED_SERVER'] ?? $_SERVER['HTTP_HOST'];
         
         $oidc->setRedirectURL("$scheme://$host$base/auth/callback");
         

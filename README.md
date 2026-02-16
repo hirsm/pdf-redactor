@@ -27,7 +27,11 @@ This app is developed in German and fully translated into English. If you wish t
 	1. `systemctl enable pdf-redactor && systemctl start pdf-redactor` to start the Python PDF redactor service and restart it on reboot.
 1. Setup PHP `.env` (general part)
 	1. Copy `env` to `.env`
-	1. Change `APP_BASE_PATH` if app is available via subfolder, e. g. **https://example.com/pdf**
+	1. Change `APP_BASE_PATH` if app is available via subfolder, e. g. **https://example.com/pdf**, otherwise empty
+	1. `APP_PROXY_PATH`
+	    1. if app is behind reverse proxy from root: empty
+		1. if app is behind reverse proxy from subfolder: subfolder
+		1. otherwise: same value as `APP_BASE_BATH`
 	1. Change port in `PYTHON_SERVICE_URL` if changed in systemd unit
 	1. Add `IMPRINT_URL` or `PRIVACY_URL`, if necessary
 1. Setup `public_html` folder
