@@ -18,7 +18,7 @@ class AppController {
         // Übersetzungsservice initialisieren (ermittelt Sprache automatisch)
         $trans = new TranslationService();
         
-        $basePath = $_ENV['APP_BASE_PATH'] ?? '';
+        $basePath = $_ENV['APP_PROXY_PATH'] ?? '';
         
         // Prüfen, ob eine Authentifizierungsmethode aktiv ist.
         // Falls ja ($isLoggedIn = true), zeigt das Template den Logout-Button an.

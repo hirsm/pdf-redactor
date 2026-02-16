@@ -27,7 +27,7 @@ class AuthMiddleware {
 
         // Fehlerbehandlung (wie bisher)
         $response = new Response();
-        $basePath = $_ENV['APP_BASE_PATH'] ?? '';
+        $basePath = $_ENV['APP_PROXY_PATH'] ?? '';
 
         if ($request->getHeaderLine('X-Requested-With') === 'XMLHttpRequest' || strpos($request->getUri()->getPath(), '/upload') !== false) {
             $response->getBody()->write(json_encode(['error' => 'Session abgelaufen. Bitte neu laden.']));

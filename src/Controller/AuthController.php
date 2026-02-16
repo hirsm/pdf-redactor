@@ -11,7 +11,7 @@ class AuthController {
     
     public function loginPage(Request $request, Response $response) {
         $method = $_ENV['AUTH_METHOD'] ?? '';
-        $basePath = $_ENV['APP_BASE_PATH'] ?? '';
+        $basePath = $_ENV['APP_PROXY_PATH'] ?? '';
         
         if ($method !== 'oidc' && $method !== 'shibboleth') {
             return $response->withHeader('Location', $basePath . '/')->withStatus(302);
@@ -53,7 +53,7 @@ class AuthController {
                 't' => $trans,
                 'title' => $trans->trans('access_denied_title'),
                 'message' => $trans->trans('access_denied_text', ['%user%' => htmlspecialchars($userId)]),
-                'basePath' => $_ENV['APP_BASE_PATH'] ?? ''
+                'basePath' => $_ENV['APP_PROXY_PATH'] ?? ''
             ]);
         }
 
@@ -62,7 +62,7 @@ class AuthController {
         $cookies = $request->getCookieParams();
         $rememberMe = isset($cookies['temp_remember_me']) && $cookies['temp_remember_me'] === '1';
         $expires = $rememberMe ? $auth->getNextExpiration() : time() + 86400;
-        $basePath = $_ENV['APP_BASE_PATH'] ?? ''; $cookiePath = empty($basePath) ? '/' : $basePath;
+        $basePath = $_ENV['APP_PROXY_PATH'] ?? ''; $cookiePath = empty($basePath) ? '/' : $basePath;
         $cookieHeader = sprintf('auth_token=%s; Expires=%s; Path=%s; HttpOnly; SameSite=Lax', $token, gmdate('D, d M Y H:i:s T', $expires), $cookiePath);
         if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') $cookieHeader .= '; Secure';
         $deleteTempCookie = sprintf('temp_remember_me=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Path=%s; SameSite=Lax', $cookiePath);
@@ -74,7 +74,7 @@ class AuthController {
     public function start(Request $request, Response $response) { $auth = new AuthService(); $auth->getOidcClient()->authenticate(); return $response; }
     public function logout(Request $request, Response $response) { 
         $cookies = $request->getCookieParams(); if (isset($cookies['auth_token'])) (new AuthService())->deleteSession($cookies['auth_token']);
-        $basePath = $_ENV['APP_BASE_PATH'] ?? ''; $cookiePath = empty($basePath) ? '/' : $basePath;
+        $basePath = $_ENV['APP_PROXY_PATH'] ?? ''; $cookiePath = empty($basePath) ? '/' : $basePath;
         $cookieHeader = sprintf('auth_token=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Path=%s; HttpOnly; SameSite=Lax', $cookiePath);
         return $response->withHeader('Set-Cookie', $cookieHeader)->withHeader('Location', $basePath . '/login')->withStatus(302);
     }
